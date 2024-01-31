@@ -1,0 +1,21 @@
+Number of errors = 1
+Number of compiled modules = 0
+No failed modules
+File C:\Users\Karan\CLionProjects\untitled5\main.cpp: 1 errors
+[1, 10]  - 'bits/stdc++.h' file not found
+Processed 1 TUs in
+ - real time = 69ms
+ - indexing CPU time = 65ms
+ - symbols writing CPU time = 2ms
+ - symbols reading CPU time = 0ms
+ - waiting to finish time = 1ms
+TU [C:\Users\Karan\CLionProjects\untitled5\main.cpp] processed in 65ms and succeed.
+
+WAIT TIME:
+Waiting for symbol files took 0ms
+Waiting for modules took 0ms of CPU time
+
+PROCESSED TIMES:
+File C:\Users\Karan\CLionProjects\untitled5\main.cpp processed 1 times
+File C:\Users\Karan\CLionProjects\untitled5\cmake-build-debug\<command line> processed 1 times
+File C:\Users\Karan\CLionProjects\untitled5\cmake-build-debug\<built-in> processed 1 times

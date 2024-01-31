@@ -4,3 +4,4 @@ project(untitled5)
 set(CMAKE_CXX_STANDARD 17)
 
 add_executable(untitled5 main.cpp)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)

@@ -1,0 +1,3 @@
+1
+0
+(0) {"HasHeaderGuard":false,"IsInclFromCL":false,"IsSystemHeader":false,"LangOptsHash":-542959759111678744,"Paths":{"C:\\Users\\Karan\\CLionProjects\\untitled5\\main.cpp":["C:\\Users\\Karan\\CLionProjects\\untitled5\\main.cpp",[17,18,46,132,195,108,167,58]]},"PredefinedMacros":[],"UsedMacros":["ONLINE_JUDGE"]}

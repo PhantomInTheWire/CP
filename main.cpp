@@ -1,35 +1,48 @@
-#include <fstream>
-#include <complex>
 #include <bits/stdc++.h>
 
 using namespace std;
 
-int value(int x, int y) {
-    std::complex<float> point((float)x/800-1.5, (float)y/800-0.5);
-    std::complex<float> z(0, 0);
-    unsigned int nb_iter = 0;
-    while (abs(z) < 2 && nb_iter <= 34) {
-        z = z * z + point;
-        nb_iter++;
+// data types
+#define int long long
+#define double long double
+
+// define functions
+#define f(i,s,e) for(int i=s;i<e;i++)
+#define cf(i,s,e) for(long long i=s;i<=e;i++)
+#define rf(i,e,s) for(long long i=e-1;i>=s;i--)
+#define pb push_back
+#define eb emplace_back
+#define all(a) (a).begin(), (a).end()
+
+/* PRINTS */
+template <class T>
+void print_v(vector<T> &v) { cout << "{"; for (auto x : v) cout << x << ","; cout << "\b}"; }
+
+// Functions
+void yes() { cout<<"YES\n"; }
+void no() { cout<<"NO\n"; }
+bool prime(int a) { if (a==1) return false; for(int i=2;i<=round(sqrt(a));++i) if (a%i==0) return 0; return true; }
+
+//constants
+const int MOD = 1e9 + 7;
+
+void solve() {
+    int t;
+    cin >> t;
+    while (t--) {
+        
     }
-    if (nb_iter < 34) return (255*nb_iter)/33;
-    else return 0;
 }
 
-int main() {
-    std::ofstream my_Image("mandelbrot.ppm");
-    if (my_Image.is_open()) {
-        my_Image << "P3\n800 800\n255\n";
-        for (int i = 0; i < 800; i++) {
-            for (int j = 0; j < 800; j++)  {
-                int val = value(i, j);
-                my_Image << val << ' ' << 0 << ' ' << 0 << "\n";
-            }
-        }
-        my_Image.close();
-    }
-    else {
-        cout << "ERROR";
-    }
+signed main() {
+//  =============================================================================
+    ios_base::sync_with_stdio(false), cin.tie(nullptr), cout.tie(nullptr);
+#ifndef ONLINE_JUDGE
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+    freopen("error.txt", "w", stderr);
+#endif
+//  =============================================================================
+    solve();
     return 0;
 }
