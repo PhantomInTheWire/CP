@@ -1,57 +1,63 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 
 using namespace std;
 
-#pragma GCC optimize("Ofast")
 
-int main()
+bool open(char x) {
+    if(x =='('||x=='{'||x=='[')
+        return true;
+    else
+        return false;
+}
+
+bool same(char past, char temp)
 {
-    ios::sync_with_stdio(0);
-    cin.tie(NULL);
-    cout.tie(NULL);
-    int t;
-    cin>>t;
-    while(t--)
-    {
-        string c;
-        cin>>c;
-        string d;
-        cin>>d;
-        int s[26];
-        int s1[26];
-        if(d.length()!=c.length())
-        {
-            cout<<"NO"<<'\n';
-            break;
-        }
-        int l=c.length();
-        for(int i=0;i<26;i++ )
-        {
-            s[i]=0;
-            s1[i]=0;
-        }
-        for(int i=0;i<26;i++)
-        {
-            s[int(tolower(c[i]))]++;
-            s1[int(tolower(d[i]))]++;
-        }
-        bool flag=0;
-        for(int i=0;i<26;i++) {
-            if(s1[i]!=s[i])
+    if(past == '(' && temp ==')')
+        return true;
+    if(past == '[' && temp ==']')
+        return true;
+    if(past == '{' && temp =='}')
+        return true;
+    else
+        return false;
+}
 
-            {
-                flag=1;
-                break;
+
+string isBalanced(string s) {
+        stack<char> a;
+        bool flag = false;
+        string l;
+        cin >> l;
+        if (l.length()%2)
+            return "NO";
+        for (auto temp: l) {
+            if (open(temp))
+                a.push(temp);
+            else {
+                char past = a.top();
+                if (!a.empty())
+                    a.pop();
+                else {
+                    flag = true;
+                    break;
+                }
+                if (same(past,temp))
+                    continue;
+                else {
+                    flag = true;
+                    break;
+                }
             }
         }
-        if(flag)
-        {
-            cout<<"NO"<<'\n';
-        }
+        if (!a.empty())
+            flag = true;
+        if (flag)
+            return "NO";
         else
-        {
-            cout<<"YES"<<'\n';
-        }
-    }
-    return 0;
+            return "YES";
+}
+
+int main() {
+    string a = isBalanced("[{[{}}]}]");
+    cout << a << endl;
 }
