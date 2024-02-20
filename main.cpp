@@ -2,66 +2,62 @@
 
 using namespace std;
 
-template <typename T>
+// data types
+#define int long long
+#define double long double
 
-class node {
-public:
-    T val;
-    node<T>* next = nullptr;
-};
+// define functions
+#define f(i,s,e) for(int i=s;i<e;i++)
+#define cf(i,s,e) for(int i=s;i<=e;i++)
+#define rf(i,e,s) for(int i=e-1;i>=s;i--)
+#define pb push_back
+#define eb emplace_back
+#define all(a) (a).begin(), (a).end()
 
-template <typename T>
+/* PRINTS */
+template <class T>
+void print_v(vector<T> &v) { cout << "{"; for (auto x : v) cout << x << ","; cout << "\b}"; }
 
-class linkedlist {
-public:
-    node<T>* head;
+// Functions
+void yes() { cout<<"YES\n"; }
+void no() { cout<<"NO\n"; }
+bool prime(int a) { if (a==1) return 0; for(int i=2;i<=round(sqrt(a));++i) if (a%i==0) return 0; return 1; }
 
-    linkedlist() {
-        head = new node<T>();
-    }
+//constants
+const int MOD = 1e9 + 7;
 
-    void insert(T val) {
-        node<T>* newNode = new node<T>();
-        newNode->val = val;
-        newNode->next = head->next;
-        head->next = newNode;
-    }
+int t[102][102];
 
-    void remove(int index) {
-        int i = 0;
-        node<T>* current = head;
-        while (i < index && current) {
-            i++;
-            current = current->next;
-        }
-        if (current)
-            current->next = current->next->next;
-    }
+int knapsack(int wt[], int val[], int w, int n) {
+    if (n==0||w==0) return 0;
+    if (t[w][n]>-1)
+        return t[w][n];
+    if (wt[n-1]<=w)
+        t[w][n] = max(val[n-1]+ knapsack(wt, val, w-wt[n-1], n-1), knapsack(wt,val,w,n-1));
+    else
+        t[w][n] = knapsack(wt,val,w,n-1);
+    return t[w][n];
+}
 
-    void print() {
-        node<T>* current = head->next;
-        while (current) {
-            cout << current->val;
-            if (current->next)
-                cout << " -> ";
-            current = current->next;
-        }
-        cout << endl;
-    }
-};
+void solve() {
+    int wt[] = {1,2,3,4,5};
+    int val[] = {10,4,5,6,8};
+    int w = 3;
+    int n = 5;
+    memset(t, -1, sizeof(t));
+    cout << knapsack(wt, val, w, n) << endl;
+}
 
-int main() {
-    linkedlist<int> a;
-    a.insert(5);
-    a.insert(4);
-    a.insert(300);
-    a.insert(2);
-    a.print();
-    a.insert(1);
-    a.insert(0);
-    a.print();
-    a.remove(5);
-    a.remove(0);
-    a.print();
+
+signed main() {
+//  =============================================================================
+    ios_base::sync_with_stdio(false), cin.tie(nullptr), cout.tie(nullptr);
+#ifndef ONLINE_JUDGE
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+    freopen("error.txt", "w", stderr);
+#endif
+//  =============================================================================
+    solve();
     return 0;
 }
